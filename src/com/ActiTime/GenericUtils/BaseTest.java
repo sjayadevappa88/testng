@@ -13,21 +13,23 @@ public class BaseTest implements AutoConstant
 	public WebDriver driver;
 	
 	@BeforeMethod
-	public void precondition()
+	public void precondition() throws InterruptedException
 	{
 	
 		System.setProperty(AutoConstant.chrome_key, AutoConstant.chrome_value);
-		WebDriver driver = new ChromeDriver(); 
+		driver = new ChromeDriver(); 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); 
 		driver.manage().deleteAllCookies();
 		driver.get(AutoConstant.AppURL); 
+		Thread.sleep(2000);
 	}
 	
 	
 	@AfterMethod
 	public void PostCondition()
 	{
+		driver.close();
 		Reporter.log("test Case executed", true);
 	}
 	

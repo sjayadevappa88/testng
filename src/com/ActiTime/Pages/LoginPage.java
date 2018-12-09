@@ -8,8 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage
 {
-
-//Declation
+	WebDriver driver;
+	//Declation
 
 	@FindBy(id="username")
 	private WebElement UserName ; 
@@ -18,13 +18,13 @@ public class LoginPage
 	private WebElement Actipassword; 
 	
 	@FindBy(xpath="(//div[contains(.,'Login')])[3]")
-	private WebElement ActiLoginButton; 
+	private WebElement ActiLoginButton;
 
-//intilizaion
+	//intilizaion
 	
 	public LoginPage(WebDriver driver)
 	{
-		super(); 
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
